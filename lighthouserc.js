@@ -1,15 +1,13 @@
 module.exports = {
     ci: {
       collect: {
-        url: ['https://www.amoremall.com/kr/ko/display/main'],
-        collect: {
-          numberOfRuns: 5,
-        },
+        //staticDistDir: "./build",
+        // startServerCommand: "npm run start", // 서버를 키는 명령어를 통해서도 실행 가능
+        url: ["http://localhost:3000"],
+        numberOfRuns: 5,
       },
-      upload: {        
-        target: 'temporary-public-storage',
+      upload: {
+        target: "temporary-public-storage",
       },
     },
-  }
-
-//gittest
+  };
