@@ -1,21 +1,29 @@
-name: Build project and run Lighthouse CI
+name: Run lighthouse CI When Push
 on: [push]
 jobs:
   lhci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 20.x
+      - name: Checkout
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 17.3.1
         uses: actions/setup-node@v1
         with:
-          node-version: 20.x
-      - name: npm ci
+          node-version: 17.3.1
+
+      - name: Install packages
         run: |
           npm ci
-      - name: run build
-        run: npm run build-nextjs
-      - name: run Lighthouse CI
+
+      - name: Build
         run: |
-          npm install -g @lhci/cli@0.3.x
-          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
+          npm run build
+
+      - name: Run Lighthouse CI
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.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 }}
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun || echo "Fail to Run Lighthouse CI!"
