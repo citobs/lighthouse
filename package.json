@@ -1,5 +1,16 @@
 {
   "dependencies": {
     "@lhci/cli": "^0.14.0"
-  }
+  },
+  "name": "er2",
+  "version": "1.0.0",
+  "main": "lighthouserc.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
